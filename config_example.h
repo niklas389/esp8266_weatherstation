@@ -22,3 +22,4 @@ int min2sleep                   =   10;
 // Misc
 String clientVer                =   "1.2";
 int battery_measures            =   5;
+bool DEBUGGING                  =   true;

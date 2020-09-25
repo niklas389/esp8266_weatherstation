@@ -7,8 +7,7 @@
 #include <PubSubClient.h>
 
 // Import settings
-// #include "config.h" //OUTDOOR
-#include "config_test.h" //TEST
+#include "config.h"
 
 ESP8266WiFiMulti WiFiMulti;
 WiFiClient wifiClient;
@@ -21,25 +20,26 @@ BME280I2C bme;
 
 // SETUP
 void setup() {
-    Serial.begin(SERIAL_BAUD);
+    if (DEBUGGING = true) {
+        Serial.begin(SERIAL_BAUD);
+        splashScreen();
+    }
 
     Wire.begin();
     pinMode(A0, INPUT);
 
-    splashScreen();
-    delay(100);
-
     Serial.println("-----------");
     Serial.print("Searching sensor...");
 
-    int sensSearch = 0;
+    int searchTO = 0;
     while (!bme.begin()){
-        sensSearch++;
+        searchTO++;
         Serial.print(".");
 
-        if (sensSearch > 10) {
+        if (searchTO > 10) {
             Serial.println("");
             Serial.println("Couldn't find BME sensor! >> Deep Sleep");
+            searchTO = 0;
             go_DS(5);
         }
         delay(100);
