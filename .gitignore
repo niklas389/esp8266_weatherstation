@@ -5,7 +5,7 @@
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
+.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
@@ -49,3 +49,4 @@ config_cmqtt.h
 config_test.h
 config.h
 config_outdoor.h
+Build/*
